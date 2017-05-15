@@ -131,7 +131,7 @@ while playing:
             print("-----------------------OPTIONS-----------------------")
             print("-----------------------------------------------------")
             print("-1.-Hunt-Snails-(LV1-5)------------------------------")
-            print("-2.-Hunt-Slimes-(LV3-7)------------------------------")
+            print("-2.-Hunt-Slimes-and-stumps-(LV3-7)-------------------")
             print("-3.-Hunt-Pigs-(LV5-10)-------------------------------")
             print("-4.-Hunt-Mushrooms-(LV7-10)--------------------------")
             print("-5.-Back---------------------------------------------")
@@ -147,21 +147,22 @@ while playing:
             if choice=="5":
                 hunting=False
             if choice=="1":
-                if dex%2=1:
-                    atk=dmg+str1+(dex+1)/2+lvl
+                if dex1%2==1:
+                    atk=dmg+str1+(dex1+1)/2+lvl
                 else:
-                    atk=dmg+str1+dex/2+lvl
+                    atk=dmg+str1+dex1/2+lvl
                 chance=random.randint(1,atk)
                 if chance==1:
                     print("you died...")
                     print("")
-                    choice=raw_input("please press enter to continue.")
                     if exp>10:
                         exp-=10
+                        print("You lost 10 exp.")
+                    choice=raw_input("please press enter to continue.")
                 else:
                     random1=random.randint(1,10)
                     if 1<=random1<=3:
-                        word="small amount"
+                        word="small number"
                         exp+=1
                     if 4<=random1<=7:
                         word="lot"
@@ -181,6 +182,140 @@ while playing:
                         word="3"
                     if random1==10:
                         word="4"
+                    print("You got "+word+" exp.")
+                    while exp>(lvl^2+2*lvl):
+                        exp-=(lvl^2+2*lvl)
+                        lvl+=1
+                        sp+=5
+                        print("You leveled up!!!")
+                    print("")
+                    choice=raw_input("please press enter to continue.")
+            if choice=="2":
+                if dex1%2==1:
+                    atk=dmg+str1+(dex1+1)/2+lvl
+                else:
+                    atk=dmg+str1+dex1/2+lvl
+                chance=random.randint(1,atk)
+                if 1<=chance<=3:
+                    print("you died...")
+                    print("")
+                    if exp>10:
+                        exp-=10
+                        print("You lost 10 exp.")
+                    choice=raw_input("please press enter to continue.")
+                else:
+                    random1=random.randint(1,12)
+                    if 1<=random1<=3:
+                        word="small number"
+                        exp+=2
+                    if 4<=random1<=8:
+                        word="lot"
+                        exp+=5
+                    if 9<=random1<=11:
+                        word="bunch"
+                        exp+=7
+                    if random1==12:
+                        word="crap ton"
+                        exp+=10
+                    print("You defeated a "+word+" of Slimes and Stumps.")
+                    if 1<=random1<=3:
+                        word="2"
+                    if 4<=random1<=7:
+                        word="5"
+                    if 8<=random1<=9:
+                        word="7"
+                    if random1==10:
+                        word="10"
+                    print("You got "+word+" exp.")
+                    while exp>(lvl^2+2*lvl):
+                        exp-=(lvl^2+2*lvl)
+                        lvl+=1
+                        sp+=5
+                        print("You leveled up!!!")
+                    print("")
+                    choice=raw_input("please press enter to continue.")
+            if choice=="3":
+                if dex1%2==1:
+                    atk=dmg+str1+(dex1+1)/2+lvl
+                else:
+                    atk=dmg+str1+dex1/2+lvl
+                chance=random.randint(1,atk)
+                if 1<=chance<=5:
+                    print("you died...")
+                    print("")
+                    if exp>10:
+                        exp-=10
+                        print("You lost 10 exp.")
+                    choice=raw_input("please press enter to continue.")
+                else:
+                    random1=random.randint(1,15)
+                    if 1<=random1<=4:
+                        word="small number"
+                        exp+=5
+                    if 5<=random1<=11:
+                        word="lot"
+                        exp+=9
+                    if 12<=random1<=14:
+                        word="bunch"
+                        exp+=13
+                    if random1==15:
+                        word="crap ton"
+                        exp+=20
+                    print("You defeated a "+word+" of Pigs.")
+                    if 1<=random1<=3:
+                        word="1"
+                    if 4<=random1<=7:
+                        word="2"
+                    if 8<=random1<=9:
+                        word="3"
+                    if random1==10:
+                        word="4"
+                    print("You got "+word+" exp.")
+                    while exp>(lvl^2+2*lvl):
+                        exp-=(lvl^2+2*lvl)
+                        lvl+=1
+                        sp+=5
+                        print("You leveled up!!!")
+                    print("")
+                    choice=raw_input("please press enter to continue.")
+            if choice=="4":
+                if dex1%2==1:
+                    atk=dmg+str1+(dex1+1)/2+lvl
+                else:
+                    atk=dmg+str1+dex1/2+lvl
+                chance=random.randint(1,atk)
+                if 1<=chance<=9:
+                    print("you died...")
+                    print("")
+                    if exp>10:
+                        exp-=10
+                        print("You lost 10 exp.")
+                    choice=raw_input("please press enter to continue.")
+
+
+                else:
+                    random1=random.randint(1,20)
+                    if 1<=random1<=6:
+                        word="small number"
+                        exp+=10
+                    if 7<=random1<=15:
+                        word="lot"
+                        exp+=16
+                    if 16<=random1<=19:
+                        word="bunch"
+                        exp+=24
+                    if random1==20:
+                        word="crap ton"
+                        exp+=30
+                    print("You defeated a "+word+" of Mushrooms")
+                    if 1<=random1<=3:
+                        word="10"
+                    if 4<=random1<=7:
+                        word="16"
+                    if 8<=random1<=9:
+                        word="24"
+                    if random1==10:
+                        word="30"
                     print("You got "+word+" exp.")
                     while exp>(lvl^2+2*lvl):
                         exp-=(lvl^2+2*lvl)
