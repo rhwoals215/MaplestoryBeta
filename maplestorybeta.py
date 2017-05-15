@@ -19,7 +19,7 @@ print("-----------------------------------------------------")
 print("-----------------------------------------------------")
 print("")
 print("")
-choice=raw_input("press enter to continue")
+choice=raw_input("press enter to continue ")
 lvl=1
 meso=0
 sp=0
@@ -54,9 +54,15 @@ while playing:
     print("")
     print("")
     hunting=True
-    choice=raw_input("Select")
+    choice=raw_input("Select: ")
+    if choice==None:
+        os.system('clear')
     if choice=="8":
-        break
+        print("Are you sure? Your progress will not be saved.")
+        choice=raw_input("type 1 to quit ")
+        if choice=="1":
+            break
+        os.system('clear')
     if choice=="1":
         while exp>(lvl^2+2*lvl):
             exp-=(lvl^2+2*lvl)
@@ -72,8 +78,6 @@ while playing:
         statusPoint=str(sp)
         if lvl<10:
             level+="-"
-        if exp<10:
-            experience+="-"
         if sp<100:
             statusPoint+="-"
         if sp<10:
@@ -100,13 +104,51 @@ while playing:
             luck+="-"
         if int1<10:
             intelligence+="-"
+        extra=""
+        if exp<1000000000:
+            extra+="-"
+        if exp<100000000:
+            extra+="-"
+        if exp<10000000:
+            extra+="-"
+        if exp<1000000:
+            extra+="-"
+        if exp<100000:
+            extra+="-"
+        if exp<10000:
+            extra+="-"
+        if exp<1000:
+            extra+="-"
+        if exp<100:
+            extra+="-"
+        if exp<10:
+            extra+="-"
         percentage=str(round(exp/(lvl^2+2*lvl),1))
+        total=str(lvl^2+2*lvl)
+        if (lvl^2+2*lvl)<1000000000:
+            total+="-"
+        if (lvl^2+2*lvl)<100000000:
+            total+="-"
+        if (lvl^2+2*lvl)<10000000:
+            total+="-"
+        if (lvl^2+2*lvl)<1000000:
+            total+="-"
+        if (lvl^2+2*lvl)<100000:
+            total+="-"
+        if (lvl^2+2*lvl)<10000:
+            total+="-"
+        if (lvl^2+2*lvl)<1000:
+            total+="-"
+        if (lvl^2+2*lvl)<100:
+            total+="-"
+        if (lvl^2+2*lvl)<10:
+            total+="-"
         os.system('clear')
         print("-----------------------------------------------------")
         print("-----------------------STATUS------------------------")
         print("-----------------------------------------------------")
-        print("---LEVEL:-"+level+"---------------"+experience+"%-----------------------")
-        print("-----------------------------------------------------")
+        print("-LEVEL:-"+level+"------------"+percentage+"%---------------------------")
+        print("-exp:-"+experience+"/"+total+"--------------------------"+extra)
         print("-STR:-"+strength+"---------------------------------------------")
         print("-DEX:-"+dexterity+"---------------------------------------------")
         print("-LUK:-"+luck+"---------------------------------------------")
@@ -120,7 +162,7 @@ while playing:
         print("")
         print("")
         print("")
-        choice=raw_input("Press enter to go back")
+        choice=raw_input("Press enter to go back ")
         os.system('clear')
     if choice=="2":
         os.system('clear')
@@ -143,7 +185,7 @@ while playing:
             print("")
             print("")
             print("")
-            choice=raw_input("Select")
+            choice=raw_input("Select ")
             if choice=="5":
                 hunting=False
             if choice=="1":
