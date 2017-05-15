@@ -19,6 +19,8 @@ print("-----------------------------------------------------")
 print("-----------------------------------------------------")
 print("")
 print("")
+print("")
+print("")
 choice=raw_input("press enter to continue ")
 lvl=1
 meso=0
@@ -28,13 +30,13 @@ str1=5
 dex1=5
 luk1=5
 int1=5
-dmg=5
+dmg=str1+(dex1-(dex1%2))/2+lvl
 word=""
+drkiller=False
 if choice=="administrator":
     lvl=100
     meso=1000000000
 playing=True
-hunting=True
 os.system('clear')
 while playing:
     print("-----------------------------------------------------")
@@ -53,7 +55,8 @@ while playing:
     print("-----------------------------------------------------")
     print("")
     print("")
-    hunting=True
+    print("")
+    print("")
     choice=raw_input("Select: ")
     if choice==None:
         os.system('clear')
@@ -69,6 +72,7 @@ while playing:
             lvl+=1
             sp+=5
         level=str(lvl)
+        dmg=str1+(dex1-(dex1%2))/2+lvl
         damage=str(dmg)
         experience=str(exp)
         strength=str(str1)
@@ -165,6 +169,7 @@ while playing:
         choice=raw_input("Press enter to go back ")
         os.system('clear')
     if choice=="2":
+        hunting=True
         os.system('clear')
         while hunting:
             print("-----------------------------------------------------")
@@ -185,15 +190,10 @@ while playing:
             print("")
             print("")
             print("")
+            dmg=str1+(dex1-(dex1%2))/2+lvl
             choice=raw_input("Select ")
-            if choice=="5":
-                hunting=False
             if choice=="1":
-                if dex1%2==1:
-                    atk=dmg+str1+(dex1+1)/2+lvl
-                else:
-                    atk=dmg+str1+dex1/2+lvl
-                chance=random.randint(1,atk)
+                chance=random.randint(1,dmg)
                 if chance==1:
                     print("you died...")
                     print("")
@@ -233,11 +233,7 @@ while playing:
                     print("")
                     choice=raw_input("please press enter to continue.")
             if choice=="2":
-                if dex1%2==1:
-                    atk=dmg+str1+(dex1+1)/2+lvl
-                else:
-                    atk=dmg+str1+dex1/2+lvl
-                chance=random.randint(1,atk)
+                chance=random.randint(1,dmg)
                 if 1<=chance<=3:
                     print("you died...")
                     print("")
@@ -277,11 +273,7 @@ while playing:
                     print("")
                     choice=raw_input("please press enter to continue.")
             if choice=="3":
-                if dex1%2==1:
-                    atk=dmg+str1+(dex1+1)/2+lvl
-                else:
-                    atk=dmg+str1+dex1/2+lvl
-                chance=random.randint(1,atk)
+                chance=random.randint(1,dmg)
                 if 1<=chance<=5:
                     print("you died...")
                     print("")
@@ -321,11 +313,7 @@ while playing:
                     print("")
                     choice=raw_input("please press enter to continue.")
             if choice=="4":
-                if dex1%2==1:
-                    atk=dmg+str1+(dex1+1)/2+lvl
-                else:
-                    atk=dmg+str1+dex1/2+lvl
-                chance=random.randint(1,atk)
+                chance=random.randint(1,dmg)
                 if 1<=chance<=9:
                     print("you died...")
                     print("")
@@ -366,4 +354,51 @@ while playing:
                         print("You leveled up!!!")
                     print("")
                     choice=raw_input("please press enter to continue.")
+            if choice=="5":
+                hunting=False
             os.system('clear')
+    if choice=="3":
+        os.system('clear')
+        quest=True
+        while quest:
+            print("-----------------------------------------------------")
+            print("-----------------------QUESTS------------------------")
+            print("-----------------------------------------------------")
+            print("-----------------------OPTIONS-----------------------")
+            print("-----------------------------------------------------")
+            print("-1.-Dr.Killer's-plan-(LV1+)--------------------------")
+            print("-2.-Bob-the-Builder's-supplies-(LV3+)----------------")
+            print("-3.-John-the-Butcher's-request-(LV5-10)--------------")
+            print("-4.-Mai's-Training-(LV1+,3+,5+,7+)-------------------")
+            print("-5.-Trade-with-Trader-Joe-(LV4+)---------------------")
+            print("-6.-Philip-the-Mechanic-(LV7+)-----------------------")
+            print("-7.-Back---------------------------------------------")
+            print("-----------------------------------------------------")
+            print("")
+            print("")
+            print("")
+            print("")
+            choice=raw_input("Select ")
+            if choice==7:
+                quest=False
+            if choice==1:
+                print("-----------------------------------------------------")
+                print("---------------Dr.Killer's-plan-(LV1+)---------------")
+                print("-----------------------------------------------------")
+                print("-'Hello.-My-name-is-Dr.Killer.'----------------------")
+                print("-'I-want-to-exterminate-all-monsters-in-maplestory'--")
+                print("-'I-believe-there-is-an-end-to-monsters'-spawning.'--")
+                print("-'Please-help-me.-I-will-give-you-a-great-reward.'---")
+                print("-----------------------------------------------------")
+                print("----------------*Kill-100-monsters-------------------")
+                print("-----------------------------------------------------")
+                print("-----------------------------------------------------")
+                print("-----------1.-Accept-----------2.-Decline------------")
+                print("-----------------------------------------------------")
+                print("")
+                print("")
+                print("")
+                print("")
+                choice=raw_input("Select ")
+                if choice=="1":
+                    drkiller=True
