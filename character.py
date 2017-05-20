@@ -16,11 +16,6 @@ class character:
         self.branch = branch
         self.john_the_butcher =john_the_butcher
         self.pig_meat = pig_meat
-        self.playing = playing
-        self.status = status
-        self.hunting = hunting
-        self.quest = quest
-        self.store = store
         self.sword1 = sword1
         self.blade1 = blade1
         self.axe1 = axe1
@@ -37,16 +32,18 @@ class character:
         print("you died...")
         print("")
         experience_loss_by_death(self)
-        self.hunting = False
     def increase_experience(self, experience_gained):
         self.experience += experience_gained
     def increase_meso(self, meso_earned):
         self.meso +=meso_earned
-    def check_level(self):
+    def check_level(self, hunting):
         while self.experience > (self.level**2 + 2 * self.level):
             self.experience -= (self.level**2 + 2 * self.level)
             self.level += 1
             self.status_point += 5
+            if hunting:
+                print("You leveled up!!!")
+                print("Now you're LV "+str(self.level)+"!")
     def increase_strength(self, point):
         self.strength += point
         self.status_point -= point
@@ -59,18 +56,7 @@ class character:
     def increase_intelligence(self, point):
         self.intelligence += point
         self.status_point -= point
-    def get_sword1(self):
-        self.sword1 = True
-    def get_blade1(self):
-        self.blade1 = True
-    def get_axe1(self):
-        self.axe1 = True
-    def increase_branch(self, number_gathered):
-        self.branch += number_gathered
-    def increase_pigmeat(self, number_gathered):
-        self.pigmeat += number_gathered
-    def increase_kills(self, kills):
-        self.kills +=kills
     def calculate_damage(self):
         self.damage = self.strength + (self.dexterity-(self.dexterity%2))/2 + self.level
-    def
+    def total_experience:
+        return (self.level**2 + 2 * self.level)

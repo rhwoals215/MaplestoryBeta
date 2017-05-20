@@ -22,7 +22,7 @@ print("")
 print("")
 print("")
 choice = raw_input("press enter to continue ")
-character1 = character(name, 1, 0, 0, 5, 5, 5, 5, 0, 0, False, 0, False, 0, False, 0, False, False, False):
+character = character(name, 1, 0, 0, 5, 5, 5, 5, 0, 0, False, 0, False, 0, False, 0, False, False, False):
 os.system("clear")
 playing = True
 while playing:
@@ -54,98 +54,97 @@ while playing:
             break
         os.system("clear")
     if choice == "1":
-        character1.check_level
-        character1
-        levelstr = str(level)
-        damagestr = str(damage)
-        experiencestr = str(experience)
-        strengthstr = str(strength)
-        dexteritystr = str(dexterity)
-        luckstr = str(luck)
-        intelligencestr = str(intelligence)
-        statuspointstr = str(statuspoint)
-        if level < 10:
-            levelstr += "-"
-        if statuspoint < 100:
-            statuspointstr += "-"
-        if statuspoint < 10:
-            statuspointstr += "-"
-        if damage < 10000000:
-            damagestr += "-"
-        if damage < 1000000:
-            damagestr += "-"
-        if damage < 100000:
-            damagestr += "-"
-        if damage < 10000:
-            damagestr += "-"
-        if damage < 1000:
-            damagestr += "-"
-        if damage < 100:
-            damagestr += "-"
-        if damage < 10:
-            damagestr += "-"
-        if strength < 10:
-            strengthstr += "-"
-        if dexterity < 10:
-            dexteritystr += "-"
-        if luck < 10:
-            luckstr += "-"
-        if intelligence < 10:
-            intelligencestr += "-"
-        extraspace = ""
-        if experience < 1000000000:
-            extraspace += "-"
-        if experience < 100000000:
-            extraspace += "-"
-        if experience < 10000000:
-            extraspace += "-"
-        if experience < 1000000:
-            extraspace += "-"
-        if experience < 100000:
-            extraspace += "-"
-        if experience < 10000:
-            extraspace += "-"
-        if experience < 1000:
-            extraspace += "-"
-        if experience < 100:
-            extraspace += "-"
-        if experience < 10:
-            extraspace += "-"
-        percentage = str(round(experience /(level**2 + 2 * level), 1))
-        totalexperiencestr = str(level**2 + 2 * level)
-        if (level**2 + 2 * level) < 1000000000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 100000000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 10000000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 1000000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 100000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 10000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 1000:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 100:
-            totalexperiencestr += "-"
-        if (level**2 + 2 * level) < 10:
-            totalexperiencestr += "-"
+        character.check_level(False)
+        level_str = str(character.level)
+        damage_str = str(character.damage)
+        experience_str = str(character.experience)
+        strength_str = str(character.strength)
+        dexterity_str = str(character.dexterity)
+        luck_str = str(character.luck)
+        intelligence_str = str(character.intelligence)
+        status_point_str = str(character.status_point)
+        if character.level < 10:
+            level_str += "-"
+        if character.status_point < 100:
+            status_point_str += "-"
+        if character.status_point < 10:
+            status_pointstr += "-"
+        if character.damage < 10000000:
+            damage_str += "-"
+        if character.damage < 1000000:
+            damage_str += "-"
+        if character.damage < 100000:
+            damage_str += "-"
+        if character.damage < 10000:
+            damage_str += "-"
+        if character.damage < 1000:
+            damage_str += "-"
+        if character.damage < 100:
+            damage_str += "-"
+        if character.damage < 10:
+            damage_str += "-"
+        if character.strength < 10:
+            strength_str += "-"
+        if character.dexterity < 10:
+            dexterity_str += "-"
+        if character.luck < 10:
+            luck_str += "-"
+        if character.intelligence < 10:
+            intelligence_str += "-"
+        extra_space = ""
+        if character.experience < 1000000000:
+            extra_space += "-"
+        if character.experience < 100000000:
+            extra_space += "-"
+        if character.experience < 10000000:
+            extra_space += "-"
+        if character.experience < 1000000:
+            extra_space += "-"
+        if character.experience < 100000:
+            extra_space += "-"
+        if character.experience < 10000:
+            extra_space += "-"
+        if character.experience < 1000:
+            extra_space += "-"
+        if character.experience < 100:
+            extra_space += "-"
+        if character.experience < 10:
+            extra_space += "-"
+        percentage = str(round(character.experience /(character.total_experience), 2))
+        total_experiencestr = str(character.total_experience)
+        if (character.total_experience) < 1000000000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 100000000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 10000000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 1000000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 100000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 10000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 1000:
+            total_experiencestr += "-"
+        if (character.total_experience) < 100:
+            total_experiencestr += "-"
+        if (character.total_experience) < 10:
+            total_experiencestr += "-"
         os.system("clear")
         while status:
             print("-----------------------------------------------------")
             print("-----------------------STATUS------------------------")
             print("-----------------------------------------------------")
-            print("level:-" + levelstr + "------------" + percentage + "%----------------------------")
-            print("experience:-" + experiencestr + "/" + totalexperiencestr + "--------------------" + extraspace)
-            print("1.STR:-" + strengthstr + "--------------------------------------------")
-            print("2.DEX:-" + dexteritystr + "--------------------------------------------")
-            print("3.LUK:-" + luckstr + "--------------------------------------------")
-            print("4.INT:-" + intelligencestr + "--------------------------------------------")
+            print("level:-" + level_str + "------------" + percentage + "%----------------------------")
+            print("experience:-" + experience_str + "/" + total_experience_str + "-------------------" + extra_space)
+            print("1.STR:-" + strength_str + "--------------------------------------------")
+            print("2.DEX:-" + dexterity_str + "--------------------------------------------")
+            print("3.LUK:-" + luck_str + "--------------------------------------------")
+            print("4.INT:-" + intelligence_str + "--------------------------------------------")
             print("-----------------------------------------------------")
-            print("Avail.-sp:-" + statuspointstr + "---------------------------------------")
+            print("Avail.-sp:-" + status_point_str + "---------------------------------------")
             print("-----------------------------------------------------")
-            print("damage:-" + damagestr + "-------------------------------------")
+            print("damage:-" + damage_str + "-------------------------------------")
             print("-----------------------------------------------------")
             print("")
             print("")
@@ -153,12 +152,20 @@ while playing:
             print("")
             choice = raw_input("Press enter to go back ")
             os.system("clear")
-            if choice == "1":
-                how_many = "How much do you want to increase by?"
-                if points_entered <= character1.status_point:
-                    character1.increase_strength
+            how_many = "How much do you want to increase by?"
+            if points_entered <= character.status_point:
+                if choice == "1":
+                    character.increase_strength
+                if choice == "2":
+                    character.increase_dexterity
+                if choice == "3":
+                    character.increase_luck
+                if choice == "4":
+                    character.increase_intelligence
                 else:
-                
+                    print("invalid")
+            else:
+                    print("invalid")
     if choice == "2":
         hunting = True
         os.system("clear")
@@ -181,35 +188,36 @@ while playing:
             print("")
             print("")
             print("")
-            damage = strength + (dexterity - (dexterity % 2)) /2 + level
+            character.calculate_damage
             choice = raw_input("Select ")
             if choice == "1":
-                chance = random.randint(1, damage)
+                chance = random.randint(1, character.damage)
                 if chance == 1:
-                    experience=death(experience)
+                    character.death
                     choice = raw_input("please press enter to continue.")
+                    hunting=False
                 else:
                     randomInt = random.randint(1, 10)
                     if 1 <= randomInt <= 3:
                         chanceword = "small number"
                         experience += 1
                         if drkiller:
-                            kills += 2
+                            character.kills+= 2
                     if 4 <= randomInt <= 7:
                         chanceword = "lot"
                         experience += 2
                         if drkiller:
-                            kills += 3
+                            character.kills+= 3
                     if 8 <= randomInt <= 9:
                         chanceword = "bunch"
                         experience += 3
                         if drkiller:
-                            kills += 4
+                            character.kills+= 4
                     if randomInt == 10:
                         chanceword = "crap ton"
                         experience += 4
                         if drkiller:
-                            kills += 6
+                            character.kills+= 6
                     print("You defeated a " + chanceword + " of Snails.")
                     if 1 <= randomInt <= 3:
                         chanceword = "1"
@@ -220,40 +228,37 @@ while playing:
                     if randomInt == 10:
                         chanceword = "4"
                     print("You got " + chanceword + " experience.")
-                    while experience > (level**2 + 2 * level):
-                        experience -= (level**2 + 2 * level)
-                        level += 1
-                        statuspoint += 5
-                        print("You leveled up!!!")
+                    character.check_level(True)
                     print("")
                     choice = raw_input("please press enter to continue.")
             if choice == "2":
                 chance = random.randint(1, damage)
                 if 1 <= chance <= 3:
-                    experience=death(experience)
+                    character.death
                     choice = raw_input("please press enter to continue.")
+                    hunting=False
                 else:
                     randomInt = random.randint(1, 12)
                     if 1 <= randomInt <= 3:
                         chanceword = "small number"
                         experience += 2
                         if drkiller:
-                            kills += 2
+                            character.kills+= 2
                     if 4 <= randomInt <= 8:
                         chanceword = "lot"
                         experience += 5
                         if drkiller:
-                            kills += 3
+                            character.kills+= 3
                     if 9 <= randomInt <= 11:
                         chanceword = "bunch"
                         experience += 7
                         if drkiller:
-                            kills += 4
+                            character.kills+= 4
                     if randomInt == 12:
                         chanceword = "crap ton"
                         experience += 10
                         if drkiller:
-                            kills += 6
+                            character.kills+= 6
                     print("You defeated a " + chanceword + " of Slimes and Stumps.")
                     if 1 <= randomInt <= 3:
                         chanceword = "2"
@@ -264,40 +269,37 @@ while playing:
                     if randomInt == 10:
                         chanceword = "10"
                     print("You got " + chanceword + " experience.")
-                    while experience > (level**2 + 2 * level):
-                        experience -= (level**2 + 2 * level)
-                        level += 1
-                        statuspoint += 5
-                        print("You leveled up!!!")
+                    character.check_level(True)
                     print("")
                     choice = raw_input("please press enter to continue.")
             if choice == "3":
                 chance = random.randint(1, damage)
                 if 1 <= chance <= 5:
-                    pexperience=death(experience)
+                    character.death
                     choice = raw_input("please press enter to continue.")
+                    hunting=False
                 else:
                     randomInt = random.randint(1, 15)
                     if 1 <= randomInt <= 4:
                         chanceword = "small number"
                         experience += 5
                         if drkiller:
-                            kills += 2
+                            character.kills+= 2
                     if 5 <= randomInt <= 11:
                         chanceword = "lot"
                         experience += 9
                         if drkiller:
-                            kills += 3
+                            character.kills+= 3
                     if 12 <= randomInt <= 14:
                         chanceword = "bunch"
                         experience += 13
                         if drkiller:
-                            kills += 4
+                            character.kills+= 4
                     if randomInt == 15:
                         chanceword = "crap ton"
                         experience += 20
                         if drkiller:
-                            kills += 6
+                            character.kills+= 6
                     print("You defeated a " + chanceword + " of Pigs.")
                     if 1 <= randomInt <= 3:
                         chanceword = "1"
@@ -308,42 +310,37 @@ while playing:
                     if randomInt == 10:
                         chanceword = "4"
                     print("You got " + chanceword + " experience.")
-                    while experience > (level**2 + 2 * level):
-                        experience -= (level**2 + 2 * level)
-                        level += 1
-                        statuspoint += 5
-                        print("You leveled up!!!")
+                    character.check_level(True)
                     print("")
                     choice = raw_input("please press enter to continue.")
             if choice == "4":
                 chance = random.randint(1, damage)
                 if 1 <= chance <= 9:
-                    experience=death(experience)
+                    character.death
                     choice = raw_input("please press enter to continue.")
-
-
+                    hunting=False
                 else:
                     randomInt = random.randint(1, 20)
                     if 1 <= randomInt <= 6:
                         chanceword = "small number"
                         experience += 10
                         if drkiller:
-                            kills += 2
+                            character.kills+= 2
                     if 7 <= randomInt <= 15:
                         chanceword = "lot"
                         experience += 16
                         if drkiller:
-                            kills += 3
+                            character.kills+= 3
                     if 16 <= randomInt <= 19:
                         chanceword = "bunch"
                         experience += 24
                         if drkiller:
-                            kills += 4
+                            character.kills+= 4
                     if randomInt == 20:
                         chanceword = "crap ton"
                         experience += 30
                         if drkiller:
-                            kills += 6
+                            character.kills+= 6
                     print("You defeated a " + chanceword + " of Mushrooms")
                     if 1 <= randomInt <= 3:
                         chanceword = "10"
@@ -354,11 +351,7 @@ while playing:
                     if randomInt == 10:
                         chanceword = "30"
                     print("You got " + chanceword + " experience.")
-                    while experience > (level**2 + 2 * level):
-                        experience -= (level**2 + 2 * level)
-                        level += 1
-                        statuspoint += 5
-                        print("You leveled up!!!")
+                    character.check_level(True)
                     print("")
                     choice = raw_input("please press enter to continue.")
             if choice == "5":
@@ -390,10 +383,10 @@ while playing:
             choice = raw_input("Select ")
             if choice == "1":
                 os.system("clear")
-                if kills < 100 and drkiller:
-                    killsstr = str(kills)
-                    if kills < 10:
-                        killsstr = "-" + killsstr
+                if character.kills < 100 and character.dr_killer:
+                    kills_str = str(kills)
+                    if character.kills< 10:
+                        kills_str = "-" + kills_str
                     print("-----------------------------------------------------")
                     print("---------------Dr.Killer's-plan-(LV1+)---------------")
                     print("-----------------------------------------------------")
@@ -403,7 +396,7 @@ while playing:
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
-                    print("----------------kills:-" + killsstr + "/100------------------------")
+                    print("----------------kills:-" + kills_str + "/100------------------------")
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
@@ -412,7 +405,7 @@ while playing:
                     print("")
                     print("")
                     choice == raw_input("Press enter.")
-                if kills > 100 and drkiller:
+                if character.kills >= 100 and dr_killer:
                     print("-----------------------------------------------------")
                     print("---------------Dr.Killer's-plan-(LV1+)---------------")
                     print("-----------------------------------------------------")
@@ -430,9 +423,9 @@ while playing:
                     print("")
                     print("")
                     print("")
-                    drkiller = False
+                    character.dr_killer= False
                     meso += 2000
-                    kills = 0
+                    character.kills= 0
                 else:
                     print("-----------------------------------------------------")
                     print("---------------Dr.Killer's-plan-(LV1+)---------------")
@@ -453,13 +446,13 @@ while playing:
                     print("")
                     choice = raw_input("Select ")
                     if choice == "1":
-                        drkiller = True
+                        character.dr_killer= True
             if choice == "2":
                 os.system("clear")
-                if branch < 30 and bobthebuilder:
-                    branchstr = branch
-                    if branch < 10:
-                        branchstr = "-" + branchstr
+                if character.branch< 30 and character.bob_the_builder:
+                    branch_str = branch
+                    if character.branch< 10:
+                        branch_str = "-" + branch_str
                     print("-----------------------------------------------------")
                     print("----------Bob-the-Builder's-supplies-(LV3+)----------")
                     print("-----------------------------------------------------")
@@ -469,7 +462,7 @@ while playing:
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
-                    print("-------------branches:-" + branchstr + "/30------------------------")
+                    print("-------------branches:-" + branch_str + "/30------------------------")
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
                     print("-----------------------------------------------------")
@@ -477,7 +470,7 @@ while playing:
                     print("")
                     print("")
                     print("")
-                if branch >= 30 and bobthebuilder:
+                if character.branch>= 30 and character.bob_the_builder:
                     print("-----------------------------------------------------")
                     print("----------Bob-the-Builder's-supplies-(LV3+)----------")
                     print("-----------------------------------------------------")
@@ -495,9 +488,9 @@ while playing:
                     print("")
                     print("")
                     print("")
-                    bobthebuilder = False
+                    character.bob_the_builder = False
                     meso += 3000
-                    branch = 0
+                    character.branch= 0
                     choice = raw_input("Press enter.")
                 else:
                     print("-----------------------------------------------------")
@@ -519,7 +512,7 @@ while playing:
                     print("")
                     choice = raw_input("Select ")
                     if choice == "1":
-                        bobthebuilder = True
+                        character.bob_the_builder = True
             if choice == "3":
                 os.system("clear")
                 if pigmeat < 20 and johnthebutcher:
@@ -543,9 +536,9 @@ while playing:
                     print("")
                     print("")
                     print("")
-                    bobthebuilder = False
+                    character.bob_the_builder = False
                     choice = raw_input("Press enter.")
-                if pigmeat >= 20 and bobthebuilder:
+                if pigmeat >= 20 and character.bob_the_builder:
                     print("-----------------------------------------------------")
                     print("---------John-the-Butcher's-request-(LV5-10)---------")
                     print("-----------------------------------------------------")
@@ -618,11 +611,11 @@ while playing:
             print("")
             choice = raw_input("Select: ")
             if choice == "1":
-                character1.get_sword1
+                character.get_sword1
             if choice == "2":
-                character1.get_blade1
+                character.get_blade1
             if choice == "3":
-                character1.get_axe1
+                character.get_axe1
             if choice == "4":
                 store = False
                 os.system("clear")
