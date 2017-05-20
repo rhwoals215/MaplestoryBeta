@@ -1,16 +1,7 @@
 #maplestorybeta
 import os
 import random
-def death(experience1):
-    print("you died...")
-    print("")
-    hunting = False
-    if experience1 < 10:
-        print("You lost "+str(experience1)+" exp.")
-        experience = 0
-        return experience1
-    else:
-        return experience1
+from .maplestorybeta import character
 os.system("clear")
 print("-----------------------------------------------------")
 print("-----------------------------------------------------")
@@ -31,27 +22,9 @@ print("")
 print("")
 print("")
 choice = raw_input("press enter to continue ")
-level = 1
-meso = 0
-statuspoint = 0
-experience = 0
-strength = 5
-dexterity = 5
-luck = 5
-intelligence = 5
-damage = strength + (dexterity-(dexterity%2))/2 + level
-chanceword = ""
-drkiller = False
-kills = 0
-bobthebuilder = False
-branch = 0
-johnthebutcher = False
-pigmeat = 0
-if choice == "administrator":
-    level = 100
-    meso = 1000000000
-playing = True
+character1 = character(name, 1, 0, 0, 5, 5, 5, 5, 0, 0, False, 0, False, 0, False, 0, False, False, False):
 os.system("clear")
+playing = True
 while playing:
     print("-----------------------------------------------------")
     print("--------------------Maple-Island---------------------")
@@ -81,12 +54,9 @@ while playing:
             break
         os.system("clear")
     if choice == "1":
-        while experience > (level**2 + 2 * level):
-            experience -= (level**2 + 2 * level)
-            level += 1
-            statuspoint += 5
+        character1.check_level
+        character1
         levelstr = str(level)
-        damage = strength + (dexterity - (dexterity % 2)) / 2 + level
         damagestr = str(damage)
         experiencestr = str(experience)
         strengthstr = str(strength)
@@ -162,26 +132,33 @@ while playing:
         if (level**2 + 2 * level) < 10:
             totalexperiencestr += "-"
         os.system("clear")
-        print("-----------------------------------------------------")
-        print("-----------------------STATUS------------------------")
-        print("-----------------------------------------------------")
-        print("level:-" + levelstr + "------------" + percentage + "%----------------------------")
-        print("experience:-" + experiencestr + "/" + totalexperiencestr + "--------------------" + extraspace)
-        print("1.STR:-" + strengthstr + "--------------------------------------------")
-        print("2.DEX:-" + dexteritystr + "--------------------------------------------")
-        print("3.LUK:-" + luckstr + "--------------------------------------------")
-        print("4.INT:-" + intelligencestr + "--------------------------------------------")
-        print("-----------------------------------------------------")
-        print("Avail.-sp:-" + statuspointstr + "---------------------------------------")
-        print("-----------------------------------------------------")
-        print("damage:-" + damagestr + "-------------------------------------")
-        print("-----------------------------------------------------")
-        print("")
-        print("")
-        print("")
-        print("")
-        choice = raw_input("Press enter to go back ")
-        os.system("clear")
+        while status:
+            print("-----------------------------------------------------")
+            print("-----------------------STATUS------------------------")
+            print("-----------------------------------------------------")
+            print("level:-" + levelstr + "------------" + percentage + "%----------------------------")
+            print("experience:-" + experiencestr + "/" + totalexperiencestr + "--------------------" + extraspace)
+            print("1.STR:-" + strengthstr + "--------------------------------------------")
+            print("2.DEX:-" + dexteritystr + "--------------------------------------------")
+            print("3.LUK:-" + luckstr + "--------------------------------------------")
+            print("4.INT:-" + intelligencestr + "--------------------------------------------")
+            print("-----------------------------------------------------")
+            print("Avail.-sp:-" + statuspointstr + "---------------------------------------")
+            print("-----------------------------------------------------")
+            print("damage:-" + damagestr + "-------------------------------------")
+            print("-----------------------------------------------------")
+            print("")
+            print("")
+            print("")
+            print("")
+            choice = raw_input("Press enter to go back ")
+            os.system("clear")
+            if choice == "1":
+                how_many = "How much do you want to increase by?"
+                if points_entered <= character1.status_point:
+                    character1.increase_strength
+                else:
+                
     if choice == "2":
         hunting = True
         os.system("clear")
@@ -641,11 +618,11 @@ while playing:
             print("")
             choice = raw_input("Select: ")
             if choice == "1":
-                schanceword1 = True
+                character1.get_sword1
             if choice == "2":
-                blade1 = True
+                character1.get_blade1
             if choice == "3":
-                axe1 = True
+                character1.get_axe1
             if choice == "4":
                 store = False
                 os.system("clear")
