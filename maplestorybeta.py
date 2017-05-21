@@ -1,49 +1,17 @@
 #maplestorybeta
 import os
 import random
-from .maplestorybeta import character
+from character import Character
+from display import Display
 os.system("clear")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-------MAPLESTORY-BETA-------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("--------------------------Made-by:-Jaemin-Ko---------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("-----------------------------------------------------")
-print("")
-print("")
-print("")
-print("")
+display = Display
+display.opening()
 choice = raw_input("press enter to continue ")
-character = character(name, 1, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, False, 0, False, 0, False, 0, False, False, False):
+character = Character("name", 1, 50, 50, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, False, 0, False, 0, False, 0, False, False, False)
 os.system("clear")
 playing = True
 while playing:
-    print("-----------------------------------------------------")
-    print("--------------------Maple-Island---------------------")
-    print("-----------------------------------------------------")
-    print("-----------------------OPTIONS-----------------------")
-    print("-----------------------------------------------------")
-    print("1.Status---------------------------------------------")
-    print("2.Hunt-----------------------------------------------")
-    print("3.Quests---------------------------------------------")
-    print("4.Store----------------------------------------------")
-    print("5.Inventory------------------------------------------")
-    print("6.Go-to-Victoria-Island------------------------------")
-    print("7.Quit-Game------------------------------------------")
-    print("-----------------------------------------------------")
-    print("-----------------------------------------------------")
-    print("")
-    print("")
-    print("")
-    print("")
+    display.maple_island()
     choice = raw_input("Select: ")
     if choice == "7":
         print("Are you sure? Your progress will not be saved.")
@@ -54,10 +22,20 @@ while playing:
             break
         os.system("clear")
     if choice == "1":
+        status = True
+        extra_space1 = ""
+        extra_space2 = ""
+        extra_space3 = ""
+        extra_space4 = ""
         character.check_level(False)
         level_str = str(character.level)
+        hit_point_str = str(character.hit_point)
+        mana_point_str = str(character.mana_point)
+        hit_point_max_str = str(character.hit_point_max())
+        mana_point_max_str = str(character.mana_point_max())
         damage_str = str(character.damage)
         experience_str = str(character.experience)
+        total_experience_str = str(character.total_experience())
         strength_str = str(character.strength)
         weapon_strength_str = str(character.weapon_strength)
         dexterity_str = str(character.dexterity)
@@ -69,7 +47,7 @@ while playing:
         if character.status_point < 100:
             status_point_str += "-"
         if character.status_point < 10:
-            status_pointstr += "-"
+            status_point_str += "-"
         if character.damage < 10000000:
             damage_str += "-"
         if character.damage < 1000000:
@@ -84,9 +62,8 @@ while playing:
             damage_str += "-"
         if character.damage < 10:
             damage_str += "-"
-        extra_space2 = ""
         if character.strength < 10:
-            extra_space2 += "-"
+            extra_space4 += "-"
         if character.weapon_strength <10:
             weapon_strength_str += "-"
         if character.dexterity < 10:
@@ -95,57 +72,55 @@ while playing:
             luck_str += "-"
         if character.intelligence < 10:
             intelligence_str += "-"
-        extra_space1 = ""
         if character.experience < 1000000000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 100000000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 10000000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 1000000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 100000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 10000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 1000:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 100:
-            extra_space1 += "-"
+            extra_space3 += "-"
         if character.experience < 10:
-            extra_space1 += "-"
-        percentage = str(round(character.experience /(character.total_experience), 2))
-        total_experiencestr = str(character.total_experience)
+            extra_space3 += "-"
+        percentage = str(round(character.experience/(character.total_experience()),2))
         if (character.total_experience) < 1000000000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 100000000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 10000000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 1000000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 100000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 10000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 1000:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 100:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         if (character.total_experience) < 10:
-            total_experiencestr += "-"
+            total_experience_str += "-"
         os.system("clear")
         while status:
             print("-----------------------------------------------------")
             print("-----------------------STATUS------------------------")
             print("-----------------------------------------------------")
             print("level:-" + level_str + "------------" + percentage + "%----------------------------")
-            print("experience:-" + experience_str + "/" + total_experience_str + "-------------------" + extra_space1)
-            print("1.STR:-" + strength_str + "-(+"+weapon_strength_str")--------------------------------------" + extra_space2)
+            print("HP:"+hit_point_str+"/"+hit_point_max_str+extra_space1+"-MP:"+mana_point_str+"/"+mana_point_max_str+extra_space2)
+            print("EXP:-" + experience_str + "/" + total_experience_str + "-----------------------" + extra_space3)
+            print("1.STR:-" + strength_str + "-(+"+weapon_strength_str+")--------------------------------------" + extra_space4)
             print("2.DEX:-" + dexterity_str + "--------------------------------------------")
             print("3.LUK:-" + luck_str + "--------------------------------------------")
             print("4.INT:-" + intelligence_str + "--------------------------------------------")
-            print("-----------------------------------------------------")
             print("Avail.-sp:-" + status_point_str + "---------------------------------------")
             print("-----------------------------------------------------")
             print("damage:-" + damage_str + "-------------------------------------")
@@ -154,44 +129,34 @@ while playing:
             print("")
             print("")
             print("")
-            choice = raw_input("Press enter to go back ")
-            os.system("clear")
-            how_many = "How much do you want to increase by?"
-            if points_entered <= character.status_point:
-                if choice == "1":
-                    character.increase_strength
-                if choice == "2":
-                    character.increase_dexterity
-                if choice == "3":
-                    character.increase_luck
-                if choice == "4":
-                    character.increase_intelligence
+            choice = raw_input("Choose 1-4 to increase stats. Choose 5 to exit. ")
+            if choice == "5":
+                status = False
+            elif choice == "1" or "2" or "3" or "4":
+                how_many = int(input("How much do you want to increase by?"))
+                if how_many <= character.status_point:
+                    if choice == "1":
+                        character.increase_strength
+                    if choice == "2":
+                        character.increase_dexterity
+                    if choice == "3":
+                        character.increase_luck
+                    if choice == "4":
+                        character.increase_intelligence
                 else:
                     print("invalid")
+                    choice = raw_input("please press enter")
+                    os.system("clear")
             else:
-                    print("invalid")
+                print("invalid")
+                choice = raw_input("please press enter")
+                os.system("clear")
+
     if choice == "2":
         hunting = True
         os.system("clear")
         while hunting:
-            print("-----------------------------------------------------")
-            print("-----------------------Hunting-----------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------OPTIONS-----------------------")
-            print("-----------------------------------------------------")
-            print("1.Hunt-Snails-(LV1-5)--------------------------------")
-            print("2.Hunt-Slimes-and-stumps-(LV3-7)---------------------")
-            print("3.Hunt-Pigs-(LV5-10)---------------------------------")
-            print("4.Hunt-Mushrooms-(LV7-10)----------------------------")
-            print("5.Back-----------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("")
-            print("")
-            print("")
-            print("")
+            display.hunting()
             character.calculate_damage
             choice = raw_input("Select ")
             if choice == "1":
@@ -360,228 +325,59 @@ while playing:
                     choice = raw_input("please press enter to continue.")
             if choice == "5":
                 hunting = False
-            os.system("clear")
+                os.system("clear")
             else:
                 os.system("clear")
     if choice == "3":
         os.system("clear")
         quest = True
         while quest:
-            print("-----------------------------------------------------")
-            print("-----------------------QUESTS------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------OPTIONS-----------------------")
-            print("-----------------------------------------------------")
-            print("1.Dr.Killer's-plan-(LV1+)----------------------------")
-            print("2.Bob-the-Builder's-supplies-(LV3+)------------------")
-            print("3.John-the-Butcher's-request-(LV5+)------------------")
-            print("4.Back-----------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("")
-            print("")
-            print("")
-            print("")
+            display.quest()
             choice = raw_input("Select ")
             if choice == "1":
                 os.system("clear")
                 if character.kills < 100 and character.dr_killer:
-                    kills_str = str(kills)
-                    if character.kills< 10:
-                        kills_str = "-" + kills_str
-                    print("-----------------------------------------------------")
-                    print("---------------Dr.Killer's-plan-(LV1+)---------------")
-                    print("-----------------------------------------------------")
-                    print("-'You-didn't-finish-the-job!'------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("----------------kills:-" + kills_str + "/100------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    display.dr_killer_incomplete(character.kills)
                     choice == raw_input("Press enter.")
-                if character.kills >= 100 andcharacter.dr_killer:
-                    print("-----------------------------------------------------")
-                    print("---------------Dr.Killer's-plan-(LV1+)---------------")
-                    print("-----------------------------------------------------")
-                    print("-'Hmm...-Nothing-changed...'-------------------------")
-                    print("-'Maybe-this-is-impossible...'-----------------------")
-                    print("-'No!!!-I-will-not-give-up!!!'-----------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("----------------Reward:-2000-mesos-------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                if character.kills >= 100 and character.dr_killer:
+                    display.dr_killer_completed()
                     character.dr_killer= False
                     character.meso += 2000
                     character.kills= 0
                 else:
-                    print("-----------------------------------------------------")
-                    print("---------------Dr.Killer's-plan-(LV1+)---------------")
-                    print("-----------------------------------------------------")
-                    print("-'Hello.-My-name-is-Dr.Killer.'----------------------")
-                    print("-'I-want-to-exterminate-all-monsters-in-maplestory'--")
-                    print("-'I-believe-there-is-an-end-to-monsters'-spawning.'--")
-                    print("-'Please-help-me.-I-will-give-you-a-great-reward.'---")
-                    print("-----------------------------------------------------")
-                    print("----------------*Kill-100-monsters-------------------")
-                    print("----------------Reward:-1000-mesos-------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------1.-Accept-----------2.-Decline------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    dr_killer_quest()
                     choice = raw_input("Select ")
                     if choice == "1":
                         character.dr_killer= True
             if choice == "2":
                 os.system("clear")
                 if character.branch< 30 and character.bob_the_builder:
-                    branch_str = character.branch
-                    if character.branch< 10:
-                        branch_str = "-" + branch_str
-                    print("-----------------------------------------------------")
-                    print("----------Bob-the-Builder's-supplies-(LV3+)----------")
-                    print("-----------------------------------------------------")
-                    print("-'Hmm..-I-don't-think-you-got-all-the-supplies.'-----")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-------------branches:-" + branch_str + "/30------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    display.bob_the_builder_incomplete(character.branch)
                 if character.branch>= 30 and character.bob_the_builder:
-                    print("-----------------------------------------------------")
-                    print("----------Bob-the-Builder's-supplies-(LV3+)----------")
-                    print("-----------------------------------------------------")
-                    print("-'Can-we-fix-it?'------------------------------------")
-                    print("-'Yes-we-can!!!'-------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("--*30-branches-have-been-taken-from-your-inventory.--")
-                    print("----------------Reward:-3000-mesos-------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    display.bob_the_builder_completed()
                     character.bob_the_builder = False
                     character.meso += 3000
                     character.branch= 0
                     choice = raw_input("Press enter.")
                 else:
-                    print("-----------------------------------------------------")
-                    print("----------Bob-the-Builder's-supplies-(LV3+)----------")
-                    print("-----------------------------------------------------")
-                    print("-'Howdie!'-------------------------------------------")
-                    print("-'I'm-fix-my-house!'---------------------------------")
-                    print("-'But-I'm-in-need-of-some-supplies.'-----------------")
-                    print("-'Wanna-give-me-a-hand?'-----------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------*Get-30-branches--------------------")
-                    print("----------------Reward:-3000-mesos-------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------1.-Accept-----------2.-Decline------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    display.bob_the_builder_quest()
                     choice = raw_input("Select ")
                     if choice == "1":
                         character.bob_the_builder = True
             if choice == "3":
                 os.system("clear")
                 if character.pig_meat < 20 and character.john_the_butcher:
-                    pig_meat_str = str(character.pig_meat)
-                    if character.pig_meat < 10:
-                        pig_meat_str = "-" + pig_meat_str
-                    print("-----------------------------------------------------")
-                    print("---------John-the-Butcher's-request-(LV5-10)---------")
-                    print("-----------------------------------------------------")
-                    print("-'Hey!-I-don't-think-you-got-what-I've-asked-ya!'----")
-                    print("-'Yea-you!!!'----------------------------------------")
-                    print("-'Go-get-me-some-pig_meat!'---------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-------------pig-meat:-" + pig_meat_str + "/20------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    john_the_butcher_incomplete(character.pig_meat)
                     character.bob_the_builder = False
                     choice = raw_input("Press enter.")
                 if pig_meat >= 20 and character.bob_the_builder:
-                    print("-----------------------------------------------------")
-                    print("---------John-the-Butcher's-request-(LV5-10)---------")
-                    print("-----------------------------------------------------")
-                    print("-'Alrightttt~'---------------------------------------")
-                    print("-'Thanks-buddy.'-------------------------------------")
-                    print("-'Here's-some-mesos'---------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("--*20-pig-meat-have-been-taken-from-your-inventory.--")
-                    print("----------------Reward:-5000-mesos-------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    display.john_the_butcher_completed()
                     character.john_the_butcher = False
                     character.pig_meat = 0
                     character.meso += 5000
                     choice = raw_input("Press enter.")
                 else:
-                    print("-----------------------------------------------------")
-                    print("---------John-the-Butcher's-request-(LV5-10)---------")
-                    print("-----------------------------------------------------")
-                    print("-'Hey,-buddy!!'--------------------------------------")
-                    print("-'Yea-you!!!'----------------------------------------")
-                    print("-'Go-get-me-some-pig-meat!'--------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------*Get-20-pig-meat--------------------")
-                    print("----------------Reward:-5000-mesos-------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("-----------------------------------------------------")
-                    print("")
-                    print("")
-                    print("")
-                    print("")
+                    display.john_the_butcher_quest()
                     choice = raw_input("Press enter.")
                     if choice == "1":
                         character.john_the_butcher = True
@@ -595,31 +391,35 @@ while playing:
         store = True
         os.system("clear")
         while store:
-            print("-----------------------------------------------------")
-            print("------------------------STORE------------------------")
-            print("-----------------------------------------------------")
-            print("----------------------ITEM-LIST----------------------")
-            print("-----------------------------------------------------")
-            print("1.Beginner's-sword-(Lv1)--------[atk+3]----2000-mesos")
-            print("2.Razor-Blade-(Lv5)----[str+2]--[atk+6]----5000-mesos")
-            print("3.Maple-Axe---(Lv8)----[st +5]-[atk+10]---10000-mesos")
-            print("4.Back-----------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("-----------------------------------------------------")
-            print("")
-            print("")
-            print("")
-            print("")
+            display.store()
             choice = raw_input("Select: ")
             if choice == "1":
-                character.sword1 = True
+                if character.sword1:
+                    print("You already have that weapon.")
+                if character.meso >= 2000 and character.sword1 == False:
+                    character.sword1 = True
+                    character.meso -= 2000
+                    character.add_weapon_stat
+                else:
+                    print("Not enough mesos.")
             if choice == "2":
-                character.blade1 = True
+                if character.blade1:
+                    print("You already have that weapon.")
+                if character.meso >= 5000 and character.blade1 == False:
+                    character.blade1 = True
+                    character.meso -= 5000
+                    character.add_weapon_stat
+                else:
+                    print("Not enough mesos.")
             if choice == "3":
-                character.axe1 = True
+                if character.axe1:
+                    print("You already have that weapon.")
+                if character.meso >= 10000 and character.axe1 == False:
+                    character.axe1 = True
+                    character.meso -= 10000
+                    character.add_weapon_stat
+                else:
+                    print("Not enough mesos.")
             if choice == "4":
                 store = False
                 os.system("clear")

@@ -1,7 +1,9 @@
-class character:
-    def __init__(self, name, level, status_point, experience, strength, dexterity, luck, intelligence, damage, meso, weapon_attack, weapon_strength, dr_killer, kills, bob_the_builder, branch, john_the_butcher, pig_meat, playing, status, hunting, quest, store, sword1, blade1, axe1):
+class Character(object):
+    def __init__(self, name, level, hit_point, mana_point, status_point, experience, strength, dexterity, luck, intelligence, damage, meso, weapon_attack, weapon_strength, dr_killer, kills, bob_the_builder, branch, john_the_butcher, pig_meat, sword1, blade1, axe1):
         self.name = name
         self.level = level
+        self.hit_point = hit_point
+        self.mana_point = mana_point
         self.status_point = status_point
         self.experience = experience
         self.strength = strength
@@ -34,10 +36,10 @@ class character:
         print("you died...")
         print("")
         experience_loss_by_death(self)
-    def increase_experience(self, experience_gained):
-        self.experience += experience_gained
-    def increase_meso(self, meso_earned):
-        self.meso +=meso_earned
+    def hit_point_max(self):
+        return (50 + (self.level - 1) * 20)
+    def mana_point_max(self):
+        return(50 + (self.level - 1) * 20)
     def check_level(self, hunting):
         while self.experience > (self.level**2 + 2 * self.level):
             self.experience -= (self.level**2 + 2 * self.level)
@@ -63,11 +65,11 @@ class character:
     def total_experience(self):
         return (self.level**2 + 2 * self.level)
     def add_weapon_stat(self):
-        if self.sword1 = True:
+        if self.sword1:
             self.weapon_attack = 3
-        if self.blade1 = True:
+        if self.blade1:
             self.weapon_attack = 6
             self.weapon_strength = 2
-        if self.axe1 = True:
+        if self.axe1:
             self.weapon_attack = 10
             self.weapon_strength = 5
