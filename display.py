@@ -1,6 +1,8 @@
 class Display(object):
-    def __init__(self):
-        None
+    def __init__(self, kills_str, branch_str, pig_meat_str):
+        self.kills_str = kills_str
+        self.branch_str = branch_str
+        self.pig_meat_str = pig_meat_str
     @staticmethod
     def opening():
         print("-----------------------------------------------------")
@@ -42,7 +44,7 @@ class Display(object):
         print("")
         print("")
     @staticmethod
-    def hunting():
+    def hunting(health_point, mana_point):
         print("-----------------------------------------------------")
         print("-----------------------Hunting-----------------------")
         print("-----------------------------------------------------")
@@ -60,7 +62,7 @@ class Display(object):
         print("")
         print("")
         print("")
-        print("")
+        print("HP: " + str(health_point) + " MP: " + str(mana_point))
     @staticmethod
     def quest():
         print("-----------------------------------------------------")
@@ -81,9 +83,9 @@ class Display(object):
         print("")
         print("")
     def dr_killer_incomplete(self, kills):
-        kills_str = str(kills)
-        if character.kills< 10:
-            kills_str = "-" + kills_str
+        self.kills_str = str(kills)
+        if kills< 10:
+            self.kills_str = "-" + self.kills_str
         print("-----------------------------------------------------")
         print("---------------Dr.Killer's-plan-(LV1+)---------------")
         print("-----------------------------------------------------")
@@ -140,9 +142,9 @@ class Display(object):
         print("")
         print("")
     def bob_the_builder_incomplete(self, branch):
-        branch_str = branch
+        self.branch_str = str(branch)
         if branch< 10:
-            branch_str = "-" + branch_str
+            self.branch_str = "-" + self.branch_str
         print("-----------------------------------------------------")
         print("----------Bob-the-Builder's-supplies-(LV3+)----------")
         print("-----------------------------------------------------")
@@ -152,7 +154,7 @@ class Display(object):
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
-        print("-------------branches:-" + branch_str + "/30------------------------")
+        print("-------------branches:-" + self.branch_str + "/30------------------------")
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
@@ -179,6 +181,7 @@ class Display(object):
         print("")
         print("")
         print("")
+    @staticmethod
     def bob_the_builder_quest():
         print("-----------------------------------------------------")
         print("----------Bob-the-Builder's-supplies-(LV3+)----------")
@@ -198,9 +201,9 @@ class Display(object):
         print("")
         print("")
     def john_the_butcher_incomplete(self, pig_meat):
-        pig_meat_str = str(pig_meat)
+        self.pig_meat_str = str(pig_meat)
         if pig_meat < 10:
-            pig_meat_str = "-" + pig_meat_str
+            self.pig_meat_str = "-" + self.pig_meat_str
         print("-----------------------------------------------------")
         print("---------John-the-Butcher's-request-(LV5-10)---------")
         print("-----------------------------------------------------")
@@ -209,7 +212,7 @@ class Display(object):
         print("-'Go-get-me-some-pig_meat!'---------------------------")
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
-        print("-------------pig-meat:-" + pig_meat_str + "/20------------------------")
+        print("-------------pig-meat:-" + self.pig_meat_str + "/20------------------------")
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
         print("-----------------------------------------------------")
