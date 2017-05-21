@@ -7,7 +7,7 @@ os.system("clear")
 display = Display
 display.opening()
 choice = raw_input("press enter to continue ")
-character = Character("name", 1, 50, 50, 100, 0, 5, 5, 5, 5, 0, 0, 0, 0, False, 0, False, 0, False, 0, False, False, False)
+character = Character("name", 1, 50, 50, 100, 0, 5, 5, 5, 5, 0, 100000, 0, 0, False, 0, False, 0, False, 0, False, False, False)
 os.system("clear")
 playing = True
 while playing:
@@ -328,15 +328,12 @@ while playing:
                     print("")
             elif choice == "5":
                 hunting = False
-                os.system("clear")
-            if hunting:
-                random_health_loss= random.randint(0, character.health_point - character.dexterity)
+            if hunting and (choice == "1" or "2" or "3" or "4"):
+                random_health_loss= random.randint(0, character.health_point_max() - character.dexterity)
                 character.health_point -= random_health_loss
                 print("your health went down by "+str(random_health_loss)+".")
                 character.check_health_point()
                 character.check_level(True)
-            else:
-                os.system("clear")
             choice = raw_input("please press enter to continue.")
             os.system("clear")
     elif choice == "3":
@@ -436,5 +433,70 @@ while playing:
                 os.system("clear")
             else:
                 os.system("clear")
+    elif choice == "5":
+        os.system("clear")
+        extra_space5 = ""
+        extra_space6 = ""
+        sword1_str = ""
+        blade1_str = ""
+        axe1_str = ""
+        branch_str = ""
+        pig_meat_str = ""
+        meso_str = str(character.meso)
+        if character.meso < 1000000:
+            meso_str +="-"
+        if character.meso < 100000:
+            meso_str +="-"
+        if character.meso < 10000:
+            meso_str +="-"
+        if character.meso < 1000:
+            meso_str +="-"
+        if character.meso < 100:
+            meso_str +="-"
+        if character.meso < 10:
+            meso_str +="-"
+        if character.sword1 == True:
+            sword1_str = "Beginner's-sword"
+        else:
+            extra_space5 += "----------------"
+        if character.blade1 == True:
+            blade1_str = "Razor-Blade"
+        else:
+            extra_space5 += "-----------"
+        if character.axe1 == True:
+            axe1_str = "Maple-Axe"
+        else:
+            extra_space5 +="---------"
+        if character.branch == 0:
+            extra_space6 += "---------"
+        if character.pig_meat == 0:
+            extra_space6 += "----------"
+        if character.branch > 0:
+            branch_str = "Branch-x"+str(character.branch)
+            if character.branch < 10:
+                    extra_space6 += "-"
+        if character.pig_meat > 0:
+            pig_meat_str = "Pig-meat-x"+str(character.pig_meat)
+            if character.pig_meat < 10:
+                    extra_space6 += "-"
+        print("-----------------------------------------------------")
+        print("----------------------Inventory----------------------")
+        print("-EQUIP-----------------------------------------------")
+        print("-"+sword1_str+"-"+blade1_str+"-"+axe1_str+"--------------"+extra_space5)
+        print("-----------------------------------------------------")
+        print("-USE-------------------------------------------------")
+        print("-----------------------------------------------------")
+        print("-----------------------------------------------------")
+        print("-ETC-------------------------------------------------")
+        print("-"+branch_str+"-"+pig_meat_str+"--------------------------------"+extra_space6)
+        print("-----------------------------------------------------")
+        print("-----------------------------------------------------")
+        print("-MESO:"+meso_str+"----------------------------------------")
+        print("-----------------------------------------------------")
+        print("")
+        print("")
+        print("")
+        choice = raw_input("Press enter to go back.")
+        os.system("clear")
     else:
         os.system("clear")

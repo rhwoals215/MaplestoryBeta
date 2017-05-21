@@ -45,6 +45,7 @@ class Character(object):
             self.experience -= (self.level**2 + 2 * self.level)
             self.level += 1
             self.status_point += 5
+            self.health_point = self.health_point_max()
             if hunting:
                 print("You leveled up!!!")
                 print("Now you're LV "+str(self.level)+"!")
