@@ -1,6 +1,5 @@
 class Character(object):
-    def __init__(self, name, level, health_point, mana_point, status_point, experience, strength, dexterity, luck, intelligence, damage, meso, weapon_attack, weapon_strength, dr_killer, kills, bob_the_builder, branch, john_the_butcher, pig_meat, sword1, blade1, axe1):
-        self.name = name
+    def __init__(self, level, health_point, mana_point, status_point, experience, strength, dexterity, luck, intelligence, damage, meso, weapon_attack, weapon_strength, dr_killer, kills, bob_the_builder, branch, john_the_butcher, pig_meat, sword1, blade1, axe1, red_potion):
         self.level = level
         self.health_point = health_point
         self.mana_point = mana_point
@@ -23,6 +22,7 @@ class Character(object):
         self.sword1 = sword1
         self.blade1 = blade1
         self.axe1 = axe1
+        self.red_potion = red_potion
     def experience_loss_by_death(self):
         if self.experience < 10:
             print("You lost "+str(self.experience)+" exp.")
@@ -32,7 +32,6 @@ class Character(object):
             self.experience -= 10
     def death(self):
         print("you died...")
-        print("")
         self.health_point = 50
         self.mana_point = 50
         self.experience_loss_by_death()
@@ -41,14 +40,13 @@ class Character(object):
     def mana_point_max(self):
         return(50 + (self.level - 1) * 20)
     def check_level(self, hunting):
-        while self.experience > (self.level**2 + 2 * self.level):
+        while self.experience >= (self.level**2 + 2 * self.level):
             self.experience -= (self.level**2 + 2 * self.level)
             self.level += 1
-            self.status_point += 5
+            self.status_point += 2
             self.health_point = self.health_point_max()
             if hunting:
-                print("You leveled up!!!")
-                print("Now you're LV "+str(self.level)+"!")
+                print("You leveled up!!! Now you're LV "+str(self.level)+"!")
     def increase_strength(self, point):
         self.strength += point
         self.status_point -= point
