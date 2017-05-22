@@ -60,16 +60,16 @@ class Character(object):
         self.intelligence += point
         self.status_point -= point
     def calculate_damage(self):
-        self.damage = self.strength + self.weapon_strength + self.weapon_strength + (self.dexterity-(self.dexterity%2))/2 + self.level
+        self.damage = self.strength + self.weapon_attack + self.weapon_strength + (self.dexterity-(self.dexterity%2))/2 + self.level
     def total_experience(self):
         return (self.level**2 + 2 * self.level)
     def add_weapon_stat(self):
         if self.sword1:
             self.weapon_attack = 3
-        elif self.blade1:
+        if self.blade1:
             self.weapon_attack = 6
             self.weapon_strength = 2
-        elif self.axe1:
+        if self.axe1:
             self.weapon_attack = 10
             self.weapon_strength = 5
     def check_health_point(self):
