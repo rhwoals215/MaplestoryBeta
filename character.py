@@ -45,6 +45,7 @@ class Character(object):
             self.level += 1
             self.status_point += 2
             self.health_point = self.health_point_max()
+            self.mana_point = self.mana_point_max()
             if hunting:
                 print("You leveled up!!! Now you're LV "+str(self.level)+"!")
     def increase_strength(self, point):
@@ -60,18 +61,22 @@ class Character(object):
         self.intelligence += point
         self.status_point -= point
     def calculate_damage(self):
-        self.damage = self.strength + self.weapon_attack + self.weapon_strength + (self.dexterity-(self.dexterity%2))/2 + self.level
+        dexterity_temp = self.dexterity
+        if self.dexterity%2 == 1:
+            dexterity_temp -=1
+        dexterity_temp = int(dexterity_temp/2)
+        self.damage = self.strength + self.weapon_attack + self.weapon_strength + dexterity_temp + self.level
     def total_experience(self):
         return (self.level**2 + 2 * self.level)
     def add_weapon_stat(self):
         if self.sword1:
             self.weapon_attack = 3
         if self.blade1:
-            self.weapon_attack = 6
+            self.weapon_attack = 5
             self.weapon_strength = 2
         if self.axe1:
-            self.weapon_attack = 10
-            self.weapon_strength = 5
+            self.weapon_attack = 8
+            self.weapon_strength = 4
     def check_health_point(self):
         if self.health_point < 0:
             self.death()

@@ -6,21 +6,13 @@ from display import Display
 os.system("clear")
 display = Display
 display.opening()
-choice = raw_input("Press enter ")
+choice = input("Press enter ")
 character = Character( 1, 50, 50, 0, 0, 5, 5, 5, 5, 0, 100000, 0, 0, False, 0, False, 0, False, 0, False, False, False, 0)
 os.system("clear")
 playing = True
 while playing:
     display.maple_island()
-    choice = raw_input("Select: ")
-    if choice == "7":
-        print("Are you sure? Your progress will not be saved.")
-        choice = raw_input("type 1 to quit ")
-        if choice == "1":
-            os.system("clear")
-            print("Thank you for playing.")
-            break
-        os.system("clear")
+    choice = input("Select: ")
     if choice == "1":
         status = True
         os.system("clear")
@@ -109,7 +101,11 @@ while playing:
                 extra_space3 += "-"
             if character.experience < 10:
                 extra_space3 += "-"
-            percentage = str(round(character.experience/(character.total_experience()),2))
+            percentage = str((round(character.experience/(character.total_experience()),4))*100) + "%"
+            if len(percentage) < 5:
+                percentage += "-"
+            if len(percentage) < 6:
+                percentage += "-"
             if character.total_experience() < 1000000000:
                 total_experience_str += "-"
             if character.total_experience() < 100000000:
@@ -131,7 +127,7 @@ while playing:
             print("-----------------------------------------------------")
             print("-----------------------STATUS------------------------")
             print("-----------------------------------------------------")
-            print("level:" + level_str + "------------" + percentage + "%-----------------------------")
+            print("level:" + level_str + "------------" + percentage + "---------------------------")
             print("EXP:" + experience_str + "/" + total_experience_str + "----------------------------" + extra_space3)
             print("HP:"+health_point_str+"/"+health_point_max_str+extra_space1+"-MP:"+mana_point_str+"/"+mana_point_max_str+extra_space2+"--------------------------------")
             print("1.STR:" + strength_str + "-"+weapon_strength_str+"---------------------------------------" + extra_space4)
@@ -144,7 +140,7 @@ while playing:
             print("-----------------------------------------------------")
             print("")
             print("")
-            choice = raw_input("Choose 1-4 to increase stats. Or press enter to exit. ")
+            choice = input("Choose 1-4 to increase stats. Or press enter to exit. ")
             if choice == "":
                 status = False
                 os.system("clear")
@@ -162,11 +158,11 @@ while playing:
                     os.system("clear")
                 else:
                     print("invalid")
-                    choice = raw_input("Press enter ")
+                    choice = input("Press enter ")
                     os.system("clear")
             else:
                 print("invalid")
-                choice = raw_input("Press enter ")
+                choice = input("Press enter ")
                 os.system("clear")
     elif choice == "2":
         hunting = True
@@ -175,7 +171,7 @@ while playing:
         while hunting:
             display.hunting(character.health_point, character.mana_point)
             character.calculate_damage()
-            choice = raw_input("Select ")
+            choice = input("Select ")
             if choice == "1":
                 chance = random.randint(1, character.damage)
                 if chance == 1:
@@ -220,7 +216,7 @@ while playing:
                     character.meso += meso_earned
                     character.check_level(True)
                     character.check_health_point()
-                choice = raw_input("Press enter to continue.")
+                choice = input("Press enter to continue.")
             elif choice == "2":
                 chance = random.randint(1, character.damage)
                 if 1 <= chance <= 3:
@@ -273,7 +269,7 @@ while playing:
                     character.meso += meso_earned
                     character.check_level(True)
                     character.check_health_point()
-                choice = raw_input("Press enter to continue.")
+                choice = input("Press enter to continue.")
             elif choice == "3":
                 chance = random.randint(1, character.damage)
                 if 1 <= chance <= 5:
@@ -324,7 +320,7 @@ while playing:
                     character.meso += meso_earned
                     character.check_level(True)
                     character.check_health_point()
-                choice = raw_input("Press enter. ")
+                choice = input("Press enter. ")
             elif choice == "4":
                 chance = random.randint(1, character.damage)
                 if 1 <= chance <= 9:
@@ -369,14 +365,16 @@ while playing:
                     character.meso += meso_earned
                     character.check_level(True)
                     character.check_health_point()
-                choice = raw_input("Press enter. ")
+                choice = input("Press enter. ")
             elif choice == "5":
                 if character.red_potion > 0:
                     character.red_potion +- 1
                     character.health_point += 50
+                    if character.health_point > character.health_point_max():
+                        character.health_point = character.health_point_max()
                 else :
                     print("You don't have any.")
-                    choice = raw_input("Press enter. ")
+                    choice = input("Press enter. ")
             elif choice == "6":
                 hunting = False
             os.system("clear")
@@ -385,12 +383,12 @@ while playing:
         quest = True
         while quest:
             display.quest()
-            choice = raw_input("Select ")
+            choice = input("Select ")
             if choice == "1":
                 os.system("clear")
                 if character.kills < 100 and character.dr_killer:
                     display.dr_killer_incomplete(character.kills)
-                    choice == raw_input("Press enter.")
+                    choice == input("Press enter.")
                 elif character.kills >= 100 and character.dr_killer:
                     display.dr_killer_completed()
                     character.dr_killer= False
@@ -398,7 +396,7 @@ while playing:
                     character.kills= 0
                 else:
                     display.dr_killer_quest()
-                    choice = raw_input("Select ")
+                    choice = input("Select ")
                     if choice == "1":
                         character.dr_killer= True
                 os.system("clear")
@@ -406,16 +404,16 @@ while playing:
                 os.system("clear")
                 if character.branch< 30 and character.bob_the_builder:
                     display.bob_the_builder_incomplete(character.branch)
-                    choice = raw_input("Press enter.")
+                    choice = input("Press enter.")
                 elif character.branch>= 30 and character.bob_the_builder:
                     display.bob_the_builder_completed()
                     character.bob_the_builder = False
                     character.meso += 3000
                     character.branch= 0
-                    choice = raw_input("Press enter.")
+                    choice = input("Press enter.")
                 else:
                     display.bob_the_builder_quest()
-                    choice = raw_input("Select ")
+                    choice = input("Select ")
                     if choice == "1":
                         character.bob_the_builder = True
                 os.system("clear")
@@ -424,16 +422,16 @@ while playing:
                 if character.pig_meat < 20 and character.john_the_butcher:
                     display.john_the_butcher_incomplete(character.pig_meat)
                     character.bob_the_builder = False
-                    choice = raw_input("Press enter. ")
+                    choice = input("Press enter. ")
                 elif character.pig_meat >= 20 and character.john_the_butcher:
                     display.john_the_butcher_completed()
                     character.john_the_butcher = False
                     character.pig_meat = 0
                     character.meso += 5000
-                    choice = raw_input("Press enter. ")
+                    choice = input("Press enter. ")
                 else:
                     display.john_the_butcher_quest()
-                    choice = raw_input("Press enter. ")
+                    choice = input("Press enter. ")
                     if choice == "1":
                         character.john_the_butcher = True
                 os.system("clear")
@@ -447,7 +445,7 @@ while playing:
         os.system("clear")
         while store:
             display.store()
-            choice = raw_input("Select: ")
+            choice = input("Select: ")
             if choice == "1":
                 if character.sword1:
                     print("You already have that weapon.")
@@ -458,7 +456,7 @@ while playing:
                     print("You have bought the item.")
                 else:
                     print("Not enough mesos.")
-                choice == raw_input("Press enter.")
+                choice == input("Press enter.")
                 os.system("clear")
             elif choice == "2":
                 if character.blade1:
@@ -470,7 +468,7 @@ while playing:
                     print("You have bought the item.")
                 else:
                     print("Not enough mesos.")
-                choice == raw_input("Press enter. ")
+                choice == input("Press enter. ")
                 os.system("clear")
             elif choice == "3":
                 if character.axe1:
@@ -482,7 +480,7 @@ while playing:
                     print("You have bought the item.")
                 else:
                     print("Not enough mesos.")
-                choice == raw_input("Press enter. ")
+                choice == input("Press enter. ")
                 os.system("clear")
             elif choice == "4":
                 how_many = int(input("How many? "))
@@ -492,7 +490,7 @@ while playing:
                     print("You bought " + str(how_many) + " Red potions.")
                 else:
                     print("Not enough mesos.")
-                choice == raw_input("Press enter. ")
+                choice == input("Press enter. ")
                 os.system("clear")
             elif choice == "5":
                 store = False
@@ -566,12 +564,20 @@ while playing:
         print("-----------------------------------------------------")
         print("")
         print("")
-        choice = raw_input("Press enter to go back. ")
+        choice = input("Press enter to go back. ")
         os.system("clear")
     elif choice == "6":
         os.system("clear")
         print("HA. Nice try. This is a beta version.")
-        choice == raw_input("Press enter to go back ")
+        choice == input("Press enter to go back ")
+        os.system("clear")
+    if choice == "7":
+        print("Are you sure? Your progress will not be saved.")
+        choice = input("type 1 to quit ")
+        if choice == "1":
+            os.system("clear")
+            print("Thank you for playing.")
+            break
         os.system("clear")
     else:
         os.system("clear")
